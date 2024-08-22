@@ -172,7 +172,7 @@ const Home = () => {
             Read Our Articles
           </button>
         </div>
-        <div className="row mt-5 border">
+        <div className="row mt-5">
           <div className="col-sm-6">
             <div className="card">
               <img src={Burg} alt="" className="card-img-top" />
