@@ -6,7 +6,7 @@ const menu = ({ menu, MenuSet, setMen, men, addCart }) => {
       <div className="container">
         <div className="col-md-12">
           <div className="col-md-6 m-auto">
-            <p className="text-center mt-5 tw-text-9xl">Our Menu</p>
+            <p className="text-center mt-5 tw-text-6xl md:tw-text-9xl">Our Menu</p>
             <p className="text-center tw-p-20">
               We consider all the drivers of change gives you the components you
               need to change to create a truly happens.

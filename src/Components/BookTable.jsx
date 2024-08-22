@@ -4,8 +4,8 @@ const BookTable = () => {
   return (
     <div className="container-fluid p-5 text-center">
       <div className="col-md-6 m-auto">
-        <h1 className="h1 tw-text-9xl">Book A Table</h1>
-        <p className="text-center tw-ps-40 tw-pr-40">
+        <h1 className="h1 tw-txet-6xl md:tw-text-9xl">Book A Table</h1>
+        <p className="text-center md:tw-ps-40 md:tw-pr-40 tw-ps-20 tw-pr-20">
           We consider all the drivers of change gives you the components you
           need to change to create a truly happens.
         </p>

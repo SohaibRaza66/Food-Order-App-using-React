@@ -12,7 +12,7 @@ const About = () => {
   return (
     <div className="container-fluid">
       <div className="col-md-12">
-        <div className="row tw-p-40">
+        <div className="row tw-p-10 md:tw-p-40">
           <div className="col-md-6">
             <img src={FriedEgg} className="img-fluid rounded-3" alt="" />
           </div>
@@ -48,7 +48,7 @@ const About = () => {
           </h1>
         </div>
       </div>
-      <div className="col-md-12 tw-p-40">
+      <div className="col-md-12 tw-p-20 md:tw-p-40">
         <div className="row">
           <div className="col-md-4">
             <div className="row">
@@ -96,7 +96,7 @@ const About = () => {
         </div>
       </div>
       <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
-      <div className="col-md-12 tw-bg-bg-900 tw-p-40">
+      <div className="col-md-12 tw-bg-bg-900 tw-p-20 md:tw-p-40">
         <div className="row">
           <div className="col-md-6">
             <h1 className="h1 xl:tw-text-7xl">

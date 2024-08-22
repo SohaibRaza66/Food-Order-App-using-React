@@ -44,7 +44,7 @@ const cart = ({ cart, remove, price , minus , add , setQuantity , quantity}) => 
             </div>
           
         )) : (
-          <h1 className="text-center tw-text-9xl">Cart is Empty</h1>
+          <h1 className="text-center md:tw-text-9xl h1 tw-text-6xl">Cart is Empty</h1>
         )}
       </div>
       <h1 className="text-center tw-text-3xl mt-5">

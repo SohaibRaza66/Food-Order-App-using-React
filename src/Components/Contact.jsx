@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div className="Contact col-md-12">
       <div className="h1 text-center">
-        <h1 className='tw-text-8xl'>Contact Us</h1>
+        <h1 className='tw-text-6xl md:tw-text-8xl'>Contact Us</h1>
       </div>
       <div className="col-md-4 m-auto p-5 text-center">
         <p>We consider all the drivers of change gives you the components you need to change to create a truly happens.</p>
