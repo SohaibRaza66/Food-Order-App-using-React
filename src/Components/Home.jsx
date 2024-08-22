@@ -165,15 +165,15 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="container-fluid tw-p-40">
+      <div className="container-fluid tw-p-20 md:tw-p-40">
         <div className="row">
           <h1 className="h1 w-auto">Our Blog & Articles</h1>
           <button className="btn btn-outline-dark ms-auto p-3 rounded-5 w-auto">
             Read Our Articles
           </button>
         </div>
-        <div className="row mt-5">
-          <div className="col-md-6">
+        <div className="row mt-5 border">
+          <div className="col-sm-6">
             <div className="card">
               <img src={Burg} alt="" className="card-img-top" />
               <div className="card-body">
@@ -193,7 +193,7 @@ const Home = () => {
           </div>
           <div className="col-md-6">
             <div className="row">
-              <div className="col-md-6 p-2 pt-0">
+              <div className="col-sm-6 p-2 pt-0">
                 <div className="card">
                   <img src={Fries} className="card-img-top" alt="" />
                   <div className="card-body">
