@@ -50,7 +50,7 @@ nav .btn1{
   cursor: pointer;
 }
 .img{
-  background: url('image_1.jpg') no-repeat center center/cover;
+  background: url('../src/assets/image_1.jpg') no-repeat center center/cover;
   height: 80vh;
   display: grid;
   justify-content: center;
