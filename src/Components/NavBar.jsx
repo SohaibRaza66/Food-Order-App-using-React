@@ -8,7 +8,7 @@ const NavBar = ({ set, show, showL , count}) => {
   };
   return (
     <div className="Food">
-      <nav className="navbar navbar-expand-md d-flex border text-#2C2F24">
+      <nav className="navbar navbar-expand-lg d-flex border text-#2C2F24">
         <div className="heading">
           <img src={Logo} alt="" />
           <h1>Bistro Bliss</h1>

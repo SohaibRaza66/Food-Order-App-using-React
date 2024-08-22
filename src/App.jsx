@@ -1,4 +1,4 @@
-import {React , useState,useRef} from 'react'
+import {React , useState,useRef, useEffect} from 'react'
 import './App.css'
 import NavBar from './Components/NavBar'
 import Login from './Components/Login'
@@ -12,6 +12,31 @@ import Cart from './Components/cart'
 import Footer from './Components/Footer'
 import BookTable from './Components/BookTable'
 import { Route,Routes, BrowserRouter } from 'react-router-dom'
+
+const getLocalStorage = () => {
+  let list = localStorage.getItem("cart");
+  if (list) {
+    return JSON.parse(localStorage.getItem("cart"));
+  } else {
+    return [];
+  }
+}
+const getLocalPrice = () => {
+  let list = localStorage.getItem("price");
+  if (list) {
+    return JSON.parse(localStorage.getItem("price"));
+  } else {
+    return 0;
+  }
+}
+const getLocalCount = () => {
+  let list = localStorage.getItem("count");
+  if (list) {
+    return JSON.parse(localStorage.getItem("count"));
+  } else {
+    return 0;
+  }
+}
 const App = () => {
   const set=(event)=>{
       document.querySelector('.active')?.classList.remove('active')
@@ -38,6 +63,7 @@ const App = () => {
   const [ispass,setPass]=useState(true)
   let isvalid = false
   const valid=useRef(isvalid)
+  const [quantity,setQuantity]=useState(1)
   const formdata = {
     firstname: fn,
     lastname: ln,
@@ -182,51 +208,68 @@ const App = () => {
       img:'egg.jpg',
       title:'Fried Eggs',
       price:9.99,
-      category:'Breakfast'
+      category:'Breakfast',
+      quantity:1,
+      iscart:false
     },
     {
       img:'pizza.jpg',
       title:'Pizza',
       price:15.99,
-      category:'Main Dishes'
+      category:'Main Dishes',
+      quantity:1,
+      iscart:false
     },
     {
       img:'juice.jpg',
       title:'Martinez Cocktail',
       price:7.25,
-      category:'Drinks'
+      category:'Drinks',
+      quantity:1,
+      iscart:false
     },
     {
       img:'cake.jpg',
       title:'ButterScotch Cake',
       price:20.99,
-      category:'Desserts'
+      category:'Desserts',
+      quantity:1,
+      iscart:false
     },
     {
       img:'lemonade.jpg',
       title:'Mint Lemonade',
       price:5.89,
-      category:'Drinks'
+      category:'Drinks',
+      quantity:1,
+      iscart:false
     },
     {
       img:'icecream.jpg',
       title:'Choclate Icecream',
       price:18.05,
-      category:'Main Dishes'
+      category:'Main Dishes',
+      quantity:1,
+      iscart:false
     },
     {
       img:'burger.jpg',
       title:'Cheese Burger',
       price:12.55,
-      category:'Main Dishes'
+      category:'Main Dishes',
+      quantity:1,
+      iscart:false
     },
     {
       img:'waffles.jpg',
       title:'Classic Waffles',
       price:12.99,
-      category:'Desserts'
+      category:'Desserts',
+      quantity:1,
+      iscart:false
     }
   ])
+  const [price,setPrice] = useState(getLocalPrice())
   const [men,setMen] = useState(menu)
   const MenuSet=(event)=>{
     const updated = menu.filter((e) => {
@@ -234,19 +277,44 @@ const App = () => {
     })
     setMen(updated)
   }
-  const [cart,setCart] = useState([])
+  const [cart,setCart] = useState(getLocalStorage())
   const addCart=(event)=>{
-    setCart([...cart,event])
-    alert(`Added ${event.title} to cart`)
-    setCount(e => e+1)
+    if (!event.iscart){
+      setCart([...cart,event])
+      alert(`Added ${event.title} to cart`)
+      setCount(e => e+1)
+      setPrice(e => e + event.price)
+      event.iscart=true
+    }
+    else{
+      alert(`Already added ${event.title} to cart`)
+    }
   }
   const remove=(event)=>{
+    event.iscart=false
     setCart(cart.filter((e)=>{
       return e!==event
     }))
     setCount(e => e-1)
+    setPrice(e => e - event.price)
+  } 
+  const minus =async (event) => {
+    if (event.quantity > 1) {
+      event.quantity = event.quantity - 1
+    }
+    else {
+      event.quantity = 1
+    }
   }
-  const [count,setCount] = useState(0)
+  const add = async (event) => {
+    event.quantity = event.quantity + 1
+  }
+  const [count,setCount] = useState(getLocalCount())
+  useEffect(()=>{
+    localStorage.setItem('cart',JSON.stringify(cart))
+    localStorage.setItem('price',JSON.stringify(price))
+    localStorage.setItem('count',JSON.stringify(count))
+  },[cart,price,count])
   return (
     <div>
       <BrowserRouter>
@@ -279,7 +347,7 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/menu' element={<Menu menu={menu} men={men} MenuSet={MenuSet} setMen={setMen} addCart={addCart}/>} />
         <Route path='/pages' element={<Pages />} />
-        <Route path='/cart' element={<Cart cart={cart} remove={remove}/>} />
+        <Route path='/cart' element={<Cart cart={cart} remove={remove} price={price} minus={minus} add={add} setQuantity={setQuantity} quantity={quantity}/>} />
         <Route path='/booktable' element={<BookTable />} />
       </Routes>
       <Footer />
