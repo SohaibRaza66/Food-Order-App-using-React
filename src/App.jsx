@@ -295,12 +295,13 @@ const App = () => {
     setCart(cart.filter((e)=>{
       return e!==event
     }))
-    setCount(e => e-1)
-    setPrice(e => e - event.price)
+    setCount(e => e - 1)
+    setPrice(e => e - (event.price * event.quantity))
   } 
   const minus =async (event) => {
     if (event.quantity > 1) {
       event.quantity = event.quantity - 1
+      setPrice(e => e - event.price)
     }
     else {
       event.quantity = 1
@@ -308,6 +309,7 @@ const App = () => {
   }
   const add = async (event) => {
     event.quantity = event.quantity + 1
+    setPrice(e => e + event.price)
   }
   const [count,setCount] = useState(getLocalCount())
   useEffect(()=>{
